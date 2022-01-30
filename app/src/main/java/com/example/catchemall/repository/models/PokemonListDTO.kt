@@ -1,4 +1,4 @@
-package com.example.catchemall.models
+package com.example.catchemall.repository.models
 
 data class PokemonListDTO(
     val count: Int,

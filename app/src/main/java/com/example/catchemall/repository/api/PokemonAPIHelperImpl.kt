@@ -1,14 +1,14 @@
-package com.example.catchemall.api
+package com.example.catchemall.repository.api
 
-import com.example.catchemall.results.LoadPokemonListError.*
-import com.example.catchemall.results.LoadPokemonListResult
-import com.example.catchemall.results.LoadPokemonListResult.*
-import com.example.catchemall.results.LoadPokemonResult
+import com.example.catchemall.repository.results.LoadPokemonListError.*
+import com.example.catchemall.repository.results.LoadPokemonListResult
+import com.example.catchemall.repository.results.LoadPokemonListResult.*
+import com.example.catchemall.repository.results.LoadPokemonResult
 import java.io.IOException
 import java.net.SocketTimeoutException
 import javax.inject.Inject
 
-class PokemonAPIHelperImpl @Inject constructor(private var service: PokemonService) : PokemonAPIHelper{
+class PokemonAPIHelperImpl @Inject constructor(private var service: PokemonService) : PokemonAPIHelper {
 
     override suspend fun loadPokemonList(): LoadPokemonListResult {
         return try{

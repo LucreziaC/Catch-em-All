@@ -1,7 +1,7 @@
-package com.example.catchemall.api
+package com.example.catchemall.repository.api
 
-import com.example.catchemall.models.Pokemon
-import com.example.catchemall.models.PokemonListDTO
+import com.example.catchemall.repository.models.Pokemon
+import com.example.catchemall.repository.models.PokemonListDTO
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

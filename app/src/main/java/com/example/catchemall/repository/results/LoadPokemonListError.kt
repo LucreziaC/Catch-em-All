@@ -1,4 +1,4 @@
-package com.example.catchemall.results
+package com.example.catchemall.repository.results
 
 sealed class LoadPokemonListError {
     object NoPokemonListFound : LoadPokemonListError()
