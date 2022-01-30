@@ -1,8 +1,8 @@
 package com.example.catchemall.results
 
-import com.example.catchemall.models.PokemonListDTO
+import com.example.catchemall.models.Pokemon
 
 sealed class LoadPokemonResult {
-    data class Success(val cocktails: PokemonListDTO) : LoadPokemonResult()
-    data class Failure(val error: LoadPokemonError) : LoadPokemonResult()
+    data class Success(val pokemon: Pokemon) : LoadPokemonResult()
+    data class Failure(val error: LoadPokemonListError) : LoadPokemonResult()
 }
