@@ -1,4 +1,4 @@
-package com.ivanmorgillo.corsoandroid.teamb.utils.bindings
+package com.example.catchemall.util.bindings
 
 import android.view.View
 import androidx.annotation.IdRes

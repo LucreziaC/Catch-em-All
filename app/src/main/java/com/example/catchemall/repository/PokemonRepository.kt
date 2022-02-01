@@ -3,6 +3,7 @@ package com.example.catchemall.repository
 import com.example.catchemall.repository.api.PokemonAPIHelper
 import com.example.catchemall.repository.results.LoadPokemonListResult
 import com.example.catchemall.repository.results.LoadPokemonResult
+import dagger.Provides
 import javax.inject.Inject
 
 interface PokemonRepository {
@@ -10,7 +11,6 @@ interface PokemonRepository {
     suspend fun loadPokemon(name:String): LoadPokemonResult
 
 }
-
 
 class PokemonRepositoryImpl @Inject constructor(private val pokemonAPIHelper: PokemonAPIHelper) :PokemonRepository{
     override suspend fun loadPokemonList() = pokemonAPIHelper.loadPokemonList()

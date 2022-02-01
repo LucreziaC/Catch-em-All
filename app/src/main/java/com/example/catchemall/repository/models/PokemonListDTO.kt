@@ -1,13 +1,17 @@
 package com.example.catchemall.repository.models
 
+import com.squareup.moshi.JsonClass
+
+
+@JsonClass(generateAdapter = true)
 data class PokemonListDTO(
     val count: Int,
     val next: String,
-    val previous: Any,
-    val results: List<Result>
+    val previous: String?,
+    val results: List<PokemonItem>
 )
-
-data class Result(
+@JsonClass(generateAdapter = true)
+data class PokemonItem(
     val name: String,
     val url: String
 )

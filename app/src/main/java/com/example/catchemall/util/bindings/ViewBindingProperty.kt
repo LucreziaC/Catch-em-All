@@ -1,4 +1,4 @@
-package com.ivanmorgillo.corsoandroid.teamb.utils.bindings
+package com.example.catchemall.util.bindings
 
 import android.os.Handler
 import android.os.Looper
