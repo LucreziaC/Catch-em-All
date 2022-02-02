@@ -1,4 +1,4 @@
-package com.example.catchemall.models
+package com.example.catchemall.repository.models
 
 import com.squareup.moshi.Json
 

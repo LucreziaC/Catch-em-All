@@ -1,4 +1,4 @@
-package com.example.catchemall.api
+package com.example.catchemall.repository.api
 
 
 class APIUrls {

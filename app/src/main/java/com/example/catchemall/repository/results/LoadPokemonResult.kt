@@ -1,6 +1,6 @@
-package com.example.catchemall.results
+package com.example.catchemall.repository.results
 
-import com.example.catchemall.models.Pokemon
+import com.example.catchemall.repository.models.Pokemon
 
 sealed class LoadPokemonResult {
     data class Success(val pokemon: Pokemon) : LoadPokemonResult()
