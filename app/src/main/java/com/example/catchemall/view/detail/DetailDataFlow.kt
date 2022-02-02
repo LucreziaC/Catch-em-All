@@ -48,13 +48,13 @@ class DetailDataFlow @Inject constructor(private val repository: PokemonReposito
             is LoadPokemonResult.Failure -> {
                 when (result.error) {
                     is LoadPokemonError.SlowInternet -> {
-                        setState(PokemonDetailState.Error("Slow Internet"))
+                        setState(PokemonDetailState.Error("Slow Internet! Retry again later"))
                     }
                     is LoadPokemonError.ServerError -> {
-                        setState(PokemonDetailState.Error("Server Error"))
+                        setState(PokemonDetailState.Error("Server Error! Retry again later"))
                     }
                     is LoadPokemonError.NoInternet -> {
-                        setState(PokemonDetailState.Error("No internet"))
+                        setState(PokemonDetailState.Error("No internet! Retry again later"))
                     }
                 }
             }

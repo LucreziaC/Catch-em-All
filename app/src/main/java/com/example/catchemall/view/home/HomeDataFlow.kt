@@ -37,18 +37,10 @@ class HomeDataFlow @Inject constructor(private val repository: PokemonRepository
                 }
                 is LoadPokemonListResult.Failure -> {
                     when (result.error) {
-                        is LoadPokemonListError.SlowInternet -> {
-                            setState(PokemonListState.Error("Slow Internet"))
-                        }
-                        is LoadPokemonListError.NoPokemonListFound -> {
-                            setState(PokemonListState.Error("No Pokemon Found"))
-                        }
-                        is LoadPokemonListError.ServerError -> {
-                            setState(PokemonListState.Error("Server Error"))
-                        }
-                        is LoadPokemonListError.NoInternet -> {
-                            setState(PokemonListState.Error("No internet"))
-                        }
+                        is LoadPokemonListError.SlowInternet -> setState(PokemonListState.Error("Slow Internet! Retry again later"))
+                        is LoadPokemonListError.NoPokemonListFound -> setState(PokemonListState.Error("No Pokemon Found!"))
+                        is LoadPokemonListError.ServerError -> setState(PokemonListState.Error("Server Error! Retry again later"))
+                        is LoadPokemonListError.NoInternet -> setState(PokemonListState.Error("No internet! Retry again later"))
                     }
                 }
             }

@@ -7,14 +7,15 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.catchemall.R
 import com.example.catchemall.databinding.FragmentHomeBinding
 import com.example.catchemall.repository.models.PokemonItem
 import com.example.catchemall.util.bindings.viewBinding
+import com.example.catchemall.util.exhaustive
 import com.example.catchemall.util.getCurrentPosition
 import dagger.hilt.android.AndroidEntryPoint
 import io.uniflow.android.livedata.onStates
-
 
 @AndroidEntryPoint
 class HomeFragment : Fragment(R.layout.fragment_home) {
@@ -36,8 +37,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         val pokemonListAdapter = PokemonListAdapter(requireContext()){ pokemon ->
             findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToDetailFragment(pokemon.name))
         }
-
         pokemonListAdapter.setAnnunciList(pokemonList?: ArrayList())
+
+        binding.swipeRefresh.setOnRefreshListener {
+            viewModel.getPokemonList()
+        }
 
         binding.pokemonList.addOnScrollListener(object: RecyclerView.OnScrollListener(){
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
@@ -56,11 +60,25 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             when (state) {
                 // react on WeatherState update
                 is PokemonListState.Content -> {
+                    binding.loadingLayout.root.visibility = View.GONE
+                    binding.errorLayout.root.visibility = View.GONE
+                    binding.swipeRefresh.isRefreshing = false
                     state.pokemonList.map{ pokemon ->
                         pokemonList?.add(pokemon)
                     }
                     pokemonListAdapter.notifyItemInserted(listPosition+1)
                 }
+                is PokemonListState.Error ->{
+                    binding.loadingLayout.root.visibility = View.GONE
+                    binding.errorLayout.root.visibility = View.VISIBLE
+                    binding.errorLayout.textError.text = state.errorMessage
+                }
+                is PokemonListState.Loading -> {
+                    binding.loadingLayout.root.visibility = View.VISIBLE
+                    binding.errorLayout.root.visibility = View.GONE
+                    Glide.with(requireContext()).load(R.drawable.pokeball_loading).into(binding.loadingLayout.loadingImage)
+                }
+                else -> {}
             }
         }
 
