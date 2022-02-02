@@ -1,17 +1,14 @@
 package com.example.catchemall.view.home
 
-import com.example.catchemall.databinding.PokemonItemBinding
-import com.example.catchemall.repository.models.Pokemon
-import com.example.catchemall.repository.models.PokemonItem
 import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.catchemall.R
+import com.example.catchemall.databinding.PokemonItemBinding
+import com.example.catchemall.repository.models.PokemonItem
 
 
 class PokemonListAdapter(

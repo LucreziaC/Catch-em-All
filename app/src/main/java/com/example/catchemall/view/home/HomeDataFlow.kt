@@ -1,11 +1,8 @@
 package com.example.catchemall.view.home
 
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.viewModelScope
 import com.example.catchemall.repository.PokemonRepository
 import com.example.catchemall.repository.models.PokemonItem
-import com.example.catchemall.repository.models.PokemonListDTO
-import com.example.catchemall.repository.results.LoadPokemonError
 import com.example.catchemall.repository.results.LoadPokemonListError
 import com.example.catchemall.repository.results.LoadPokemonListResult
 import dagger.hilt.android.lifecycle.HiltViewModel

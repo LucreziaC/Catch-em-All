@@ -1,11 +1,10 @@
 package com.example.catchemall.view.home
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.example.catchemall.R
 import com.example.catchemall.databinding.FragmentHomeBinding
 import com.example.catchemall.util.bindings.viewBinding
@@ -25,7 +24,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        binding.pokemonList.addItemDecoration(
+            DividerItemDecoration(requireContext(),
+            DividerItemDecoration.VERTICAL))
         val pokemonListAdapter = PokemonListAdapter(requireContext()){ pokemon ->
 
         }

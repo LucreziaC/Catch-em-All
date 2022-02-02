@@ -3,7 +3,8 @@ package com.example.catchemall.repository.api
 import android.util.Log
 import com.example.catchemall.repository.results.LoadPokemonListError.*
 import com.example.catchemall.repository.results.LoadPokemonListResult
-import com.example.catchemall.repository.results.LoadPokemonListResult.*
+import com.example.catchemall.repository.results.LoadPokemonListResult.Failure
+import com.example.catchemall.repository.results.LoadPokemonListResult.Success
 import com.example.catchemall.repository.results.LoadPokemonResult
 import java.io.IOException
 import java.net.SocketTimeoutException

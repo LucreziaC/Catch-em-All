@@ -3,7 +3,6 @@ package com.example.catchemall.repository
 import com.example.catchemall.repository.api.PokemonAPIHelper
 import com.example.catchemall.repository.results.LoadPokemonListResult
 import com.example.catchemall.repository.results.LoadPokemonResult
-import dagger.Provides
 import javax.inject.Inject
 
 interface PokemonRepository {

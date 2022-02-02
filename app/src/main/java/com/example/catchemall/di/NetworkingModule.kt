@@ -2,7 +2,6 @@ package com.example.catchemall.di
 
 import com.example.catchemall.BuildConfig
 import com.example.catchemall.repository.api.APIUrls
-import com.example.catchemall.repository.api.PokemonAPIHelper
 import com.example.catchemall.repository.api.PokemonService
 import dagger.Module
 import dagger.Provides
