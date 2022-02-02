@@ -1,6 +1,7 @@
 package com.example.catchemall.repository.api
 
 import android.util.Log
+import com.example.catchemall.repository.results.LoadPokemonError
 import com.example.catchemall.repository.results.LoadPokemonListError.*
 import com.example.catchemall.repository.results.LoadPokemonListResult
 import com.example.catchemall.repository.results.LoadPokemonListResult.Failure
@@ -12,9 +13,9 @@ import javax.inject.Inject
 
 class PokemonAPIHelperImpl @Inject constructor(private val service: PokemonService) : PokemonAPIHelper {
 
-    override suspend fun loadPokemonList(): LoadPokemonListResult {
+    override suspend fun loadPokemonList(itemNum: Int, offset: Int): LoadPokemonListResult {
         return try{
-            val pokemonList = service.loadPokemonList(15)
+            val pokemonList = service.loadPokemonList(itemNum, offset)
             if(pokemonList.results.isEmpty()){
                 Failure(NoPokemonListFound)
             }else
@@ -35,11 +36,12 @@ class PokemonAPIHelperImpl @Inject constructor(private val service: PokemonServi
            val pokemon = service.loadPokemon(name)
            return LoadPokemonResult.Success(pokemon)
        }catch (e: IOException) { // no internet
-           LoadPokemonResult.Failure(NoInternet)
+           LoadPokemonResult.Failure(LoadPokemonError.NoInternet)
        } catch (e: SocketTimeoutException) {
-           LoadPokemonResult.Failure(SlowInternet)
+           LoadPokemonResult.Failure(LoadPokemonError.SlowInternet)
        } catch (e: Exception) {
-           LoadPokemonResult.Failure(ServerError)
+           e.printStackTrace()
+           LoadPokemonResult.Failure(LoadPokemonError.ServerError)
        }
     }
 

@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.catchemall.R
 import com.example.catchemall.databinding.*
 import com.example.catchemall.view.detail.DetailFragmentItems.*
@@ -100,7 +101,7 @@ sealed class DetailFragmentViewHolder(itemView: View) : RecyclerView.ViewHolder(
     class ImageViewHolder(private val binding: FragmentDetailImageBinding) :
         DetailFragmentViewHolder(binding.root) {
         fun bind(item: Image,context:Context) {
-            Glide.with(context).load(item.image).into(binding.pokemonDetailImage)
+            Glide.with(context).load(item.image).diskCacheStrategy(DiskCacheStrategy.NONE).into(binding.pokemonDetailImage)
         }
     }
 

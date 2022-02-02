@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">Catch\'em all!</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="stats">Stats:</string>
+    <string name="abilities">Abilities:</string>
 </resources>
