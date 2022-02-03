@@ -5,7 +5,7 @@ import com.example.catchemall.repository.results.LoadPokemonResult
 
 interface PokemonAPIHelper {
 
-    suspend fun loadPokemonList(): LoadPokemonListResult
+    suspend fun loadPokemonList(itemNum: Int, offset: Int): LoadPokemonListResult
     suspend fun loadPokemon(name: String): LoadPokemonResult
 
 }
