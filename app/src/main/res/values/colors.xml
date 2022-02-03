@@ -2,5 +2,6 @@
 <resources>
     <color name="colorPrimary">#940005</color>
     <color name="colorAccent">#03DAC5</color>
+    <color name="colorText">#000000</color>
     <color name="colorPokemonItemBackground">#40002A45</color>
 </resources>

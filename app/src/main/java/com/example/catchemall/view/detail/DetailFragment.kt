@@ -33,16 +33,28 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.pokemonName.text = pokemonName
         val adapter = DetailFragmentAdapter(requireContext())
         binding.detailList.adapter = adapter
 
         onStates(viewModel) { state ->
             when (state) {
                 is PokemonDetailState.Content -> {
+                    binding.loadingLayout.root.visibility = View.GONE
+                    binding.errorLayout.root.visibility = View.GONE
                     adapter.items = state.details
                 }
-                else -> {}
-            }.exhaustive
+                is PokemonDetailState.Error -> {
+                    binding.loadingLayout.root.visibility = View.GONE
+                    binding.errorLayout.root.visibility = View.VISIBLE
+                    binding.errorLayout.textError.text = state.errorMessage
+                }
+                is PokemonDetailState.Loading -> {
+                    binding.loadingLayout.root.visibility = View.VISIBLE
+                    binding.errorLayout.root.visibility = View.GONE
+                    Glide.with(requireContext()).load(R.drawable.pokeball_loading).into(binding.loadingLayout.loadingImage)
+                }
+            }
         }
     }
 
